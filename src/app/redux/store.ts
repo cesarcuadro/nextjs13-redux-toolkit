@@ -10,3 +10,4 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 // by inferring these types now, we can ensure they are up to date as we add new state slices or make changes to middleware
+// both are from the store instance
