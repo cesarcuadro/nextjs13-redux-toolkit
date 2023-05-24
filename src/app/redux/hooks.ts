@@ -5,5 +5,5 @@ import type { RootState, AppDispatch } from "./store"
 
 //instead of importing RootState and AppDispatch into each component, you create a hooks with them for useDispatch and useSelector
 
-export const useAppDispatch = () => useDispatch<AppDispatch>
+export const useAppDispatch = () => useDispatch<AppDispatch>()
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector 
