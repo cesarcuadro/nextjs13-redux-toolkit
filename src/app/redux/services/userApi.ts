@@ -1,27 +1,25 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 type User = {
-    id: number;
-    name: string;
-    email: number;
-}
+  id: number;
+  name: string;
+  email: number;
+};
 
 export const userApi = createApi({
-    reducerPath: "userApi",
-    refetchOnFocus: true,
-    // when the application window is refocused, all subscribed queries are refetched by RTK Query
-    baseQuery: fetchBaseQuery({
-        baseUrl: "https://jsonplaceholder.typicode.com/",
+  reducerPath: "userApi",
+  refetchOnFocus: true,
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://jsonplaceholder.typicode.com/",
+  }),
+  endpoints: (builder) => ({
+    getUsers: builder.query<User[], null>({
+      query: () => "users",
     }),
-    endpoints: (builder) => ({
-        getUsers: builder.query<User[], null>({
-            query: () => "users",
-        }),
-        getUserById: builder.query<User[], {id: string}>({
-            query: ({id}) => `users/{id}`,
-        }),
+    getUserById: builder.query<User, { id: string }>({
+      query: ({ id }) => `users/${id}`,
     }),
+  }),
 });
 
 export const { useGetUsersQuery, useGetUserByIdQuery } = userApi;
-// useState version of the two endpoints
