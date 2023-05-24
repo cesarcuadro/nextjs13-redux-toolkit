@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
+import counterReducer from "./features/counterSlice"
 
 // configureStore allows us to specify options and default middleware for the store
     // currently there are no middleware or reducers
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    counterReducer
+  },
   devTools: process.env.NODE_ENV !== "production",
 });
 

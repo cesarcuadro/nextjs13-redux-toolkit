@@ -35,6 +35,6 @@ export const {
     incrementByAmount,
     decrementByAmount,
     reset
-}: any => counter.actions;
+}: any = counter.actions;
 
 export default counter.reducer
